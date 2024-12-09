@@ -39,5 +39,5 @@ jobs:
         with:
           context: ./flask-app
           push: true
-          tag: ${{ secrets.DOCKER_USERNAME }}/bogocasino:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/bogocasino:latest
 
