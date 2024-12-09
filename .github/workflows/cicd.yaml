@@ -40,4 +40,23 @@ jobs:
           context: ./flask-app
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/bogocasino:latest
-
+  deployment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Deployment to Digital Ocean
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          key: ${{secrets.SSHKEY}}
+          passphrase: ${{secrets.PASSPHRASE}}
+          envs: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}, ${{secrets.IMAGENAME}}, ${{secrets.DOCKER_USERNAME}}
+          script: |
+            docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
+            docker stop ${{secrets.IMAGENAME}}
+            docker rm ${{secrets.IMAGENAME}}
+            docker run -d \
+            --restart always \
+            --name ${{secrets.IMAGENAME}} \
+            ${{secrets.DOCKER_USERNAME}}/${{secrets.IMAGENAME}}:latest
