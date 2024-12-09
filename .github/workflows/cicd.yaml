@@ -52,6 +52,5 @@ jobs:
           password: ${{secrets.PASSW}}
           envs: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}, ${{secrets.IMAGENAME}}, ${{secrets.DOCKER_USERNAME}}
           script: |
-            sudo apt install docker
             docker-compose build --force-rm --no-cache --compress
             docker-comopse up -d
