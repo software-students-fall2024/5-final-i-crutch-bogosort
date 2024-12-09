@@ -109,7 +109,15 @@
 
 
         </form>
-    </div>
+
+        <br>
+        <br>
+
+        <form style="align-content: center;text-align: center;" method="POST" action="{{url_for('user_home', username=username)}}">
+            <input type="hidden" value={{balance}} name="balance"/>
+            <input type="submit" value="Go Back"/>
+        </form>
+        </div>
 
 
 </body>
