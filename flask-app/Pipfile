@@ -5,11 +5,10 @@ name = "pypi"
 
 [packages]
 Flask = "*"
-pytest = "*"
 coverage = "*"
 flask-login = "*"
 pymongo = "*"
-exceptiongroup = "*"
+pytest = "*"
 
 [dev-packages]
 

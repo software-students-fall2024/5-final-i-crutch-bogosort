@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+    <h1>Blackjack</h1>
+
+    <style>
+        .container {
+            text-align: center;
+            align-content: center;
+        }
+
+        .restext {
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h2 style="text-align: center;">Let's Play!</h2>
+
+    <h2 style="text-align: center;">Here are the results:</h2>
+
+    <div id="resCont" class="container"></div>
+
+    <h2 style="text-align: center;">Your New Balance is: ${{balance}}</h2>
+
+    <div>
+        <form method="POST" action="{{url_for('bj_home', username=username)}}" style = "text-align: center;align-content: center;">
+            <input type="hidden" name="balance" value="{{balance}}"/>
+            <input type="submit" value = "Go Back"/>
+        </form>
+    </div>
+</body>
+
+<script>
+    const cont = document.getElementById("resCont");
+    const t = "{{prev}}";
+    const texts = t.split("@");
+    for(i = 0; i < texts.length; i++){
+        const text = document.createElement("h3")
+        text.className = "restext";
+        text.textContent = texts[i]
+        cont.appendChild(text);
+    }
+</script>
