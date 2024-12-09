@@ -23,9 +23,6 @@ Before starting, ensure you have the following installed:
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - Python 3.10+
 
-## `.env` File Setup Instructions
-#### `.env` File for Database Connection
-
 ## Run and Configure Code
    
 1. First, clone the repository into your preferred IDE or terminal.
