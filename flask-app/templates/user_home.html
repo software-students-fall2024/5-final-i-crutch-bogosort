@@ -5,23 +5,31 @@
 </head>
 
 <body>
-    <header>
-        <h2>Welcome, {{username}}!</h2>
-        <form action = "{{ url_for('logout') }}" method = "POST">
-            <button type = "submit" class = "logout-btn">Logout</button>
-        </form>
-    </header>
-    <br>
-    <div class="button-container">
-        <form method ="POST"  action = "{{url_for('craps_home', username=username)}}">
-            <input type="hidden" value={{balance}} name="balance"/>
-            <input type="submit" value="Craps"/>
-        </form>
+    <div class = "user-screen">
+        <header>
+            <h2>Welcome, {{username}}!</h2>
+            <h2>Balance: {{balance}}</h2>
+            <form action = "{{ url_for('logout') }}" method = "POST">
+                <button type = "submit" class = "logout-btn">Logout</button>
+            </form>
+        </header>
 
-        <form method ="POST"  action = "{{url_for('bj_home', username=username)}}">
-            <input type="hidden" value={{balance}} name="balance"/>
-            <input type="submit" value="Blackjack"/>
-        </form>
+        <div class="button-container">
+            <form method ="POST" action = "{{url_for('craps_home', username=username)}}">
+                <input type="hidden" value={{balance}} name="balance"/>
+                <input type="submit" class = "rebut" value="Craps"/>
+            </form>
+            <form method ="POST"  action = "{{url_for('bj_home', username=username)}}">
+                <input type="hidden" value={{balance}} name="balance"/>
+                <input type="submit" class="rebut" value="Blackjack"/>
+            </form>
+            <form action = "{{ url_for('logout') }}" method = "POST">
+                <button type = "submit" class = "rebut">placeholder</button>
+            </form>
+            <form action = "{{ url_for('logout') }}" method = "POST">
+                <button type = "submit" class = "rebut">placeholder</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
