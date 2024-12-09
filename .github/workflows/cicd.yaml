@@ -59,3 +59,4 @@ jobs:
             --restart always \
             --name ${{secrets.IMAGENAME}} \
             ${{secrets.DOCKER_USERNAME}}/${{secrets.IMAGENAME}}:latest
+            docker compose up --build -d
