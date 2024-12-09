@@ -1,5 +1,6 @@
 services:
   flask-app:
+    image: bogocasino:latest
     build: ./flask-app
     ports:
       - 5000:5000

@@ -55,7 +55,4 @@ jobs:
             docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
             docker stop ${{secrets.IMAGENAME}}
             docker rm ${{secrets.IMAGENAME}}
-            docker run -d \
-            --restart always \
-            --name ${{secrets.IMAGENAME}} \
-            ${{secrets.DOCKER_USERNAME}}/${{secrets.IMAGENAME}}:latest
+            docker compose up --build -d
