@@ -51,7 +51,7 @@ jobs:
           username: ${{secrets.USERNAME}}
           password: ${{secrets.PASSW}}
           envs: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}, ${{secrets.IMAGENAME}}, ${{secrets.DOCKER_USERNAME}}
-          run: |
+          script: |
             docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
             docker stop ${{secrets.IMAGENAME}}
             docker rm ${{secrets.IMAGENAME}}
