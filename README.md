@@ -17,6 +17,28 @@ Our project is our virtual experience of a casino. In order to enter, a new user
 - Sean Lee, [Github](https://github.com/jseanlee)
 - Sandy Li, [Github](https://github.com/vernairesl)
 
-## Instructions for configuration.
+## Getting Started
+Before starting, ensure you have the following installed:
+- [Docker](https://www.docker.com/products/docker-desktop/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- Python 3.10+
 
-## Intructions for set up/starter data if applicable
+## Run and Configure Code
+   
+1. First, clone the repository into your preferred IDE or terminal.
+   ```
+   https://github.com/software-students-fall2024/5-final-i-crutch-bogosort.git
+   cd 5-final-i-crutch-bogosort
+   ```
+2. Configure .env file
+3. Build and start the app using Docker Compose:
+   ```
+   docker-compose up --build
+   ```
+   This will start all containers.
+4. Open your browser and navigate to: ```http://localhost:5000```
+   
+5. Stop and remove containers:
+   ```
+   docker-compose down
+   ```
