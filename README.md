@@ -4,7 +4,7 @@
 
 ## Description
 
-Our project is our virtual experience of a casino. In order to enter, a new user user creates an account where they are given $10000 to start with. From there they have the choice to play our versions of Blackjack and Craps, attempting to increase their fortunes while risking losing it all.
+BogoSort Casino is a web-based platform offering a virtual casino experience directly in your browser. Upon registration, each new user is credited with $10,000 in virtual currency. Players can then test their luck and skill by playing our versions of Blackjack and Craps. Our project simulates the authentic casino atmosphere with straightforward gameplay and interactive features.
 
 ## Container Images
 
