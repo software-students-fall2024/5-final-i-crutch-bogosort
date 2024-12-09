@@ -227,6 +227,31 @@ def bj_play(username):
 
     return render_template("bj_play.html", username=username, prev=prev, balance=balance, bet=bet, turn=turn)
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """handles account creation interface and functionality"""
+    error = None
+
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        password_confirm = request.form.get("password_confirm")
+
+        # validation logic
+        if username in users:
+            error = "Error: Username already exists, try another!"
+        elif not username or not password:
+            error = "Error: Username or password left blank."
+        elif password != password_confirm:
+            error = "Error: Passwords do not match."
+        else:
+            # Add new user to "database"
+            users[username] = {"password": password}
+            db.register_user(username, password)
+            return redirect(url_for("show_login"))
+
+    return render_template("register.html", error=error)
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
