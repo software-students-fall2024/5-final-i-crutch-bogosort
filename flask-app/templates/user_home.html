@@ -11,11 +11,16 @@
             <button type = "submit" class = "logout-btn">Logout</button>
         </form>
     </header>
-
+    <br>
     <div class="button-container">
         <form method ="POST"  action = "{{url_for('craps_home', username=username)}}">
             <input type="hidden" value={{balance}} name="balance"/>
             <input type="submit" value="Craps"/>
+        </form>
+
+        <form method ="POST"  action = "{{url_for('bj_home', username=username)}}">
+            <input type="hidden" value={{balance}} name="balance"/>
+            <input type="submit" value="Blackjack"/>
         </form>
     </div>
 </body>

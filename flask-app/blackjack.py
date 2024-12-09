@@ -52,6 +52,7 @@ class Hand:
 def take_hit(deck, hand):
     card = deck.deal_one()
     hand.add_card(card)
+<<<<<<< HEAD
     print(f"Dealt card: {card}")
     print(f"Hand now: {hand}\n")
 
@@ -140,3 +141,33 @@ def play_game():
 
 if __name__ == "__main__":
     play_game()
+=======
+    result = f"Dealt card: {card}@Hand now: {hand}"
+    return result
+
+def show_some(player, dealer):
+    result = "Dealers Hand:@(X "
+    if dealer.cards:
+        result+= dealer.cards[1].__str__() + ")"
+    result += f"@Player Hand:@{player.__str__()}"
+    return result
+
+def show_all(player, dealer):
+    result = f"Dealers Hand: {dealer}@Player Hand: {player}"
+    return result
+
+def player_busts():
+    return "You busts! Deaer wins."
+
+def player_wins():
+    return "You win!"
+
+def dealer_busts():
+    return "Dealer busts! You win."
+
+def dealer_wins():
+    return "Dealer wins!"
+
+def push():
+    return "It's a tie! Push."
+>>>>>>> b6d80b0180f96b7790af6a951ca197b061fa7e45

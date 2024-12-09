@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <h1>Blackjack</h1>
+
+    <style>
+        .container {
+            text-align: center;
+            align-content: center;
+        }
+
+        .restext {
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h2 style="text-align: center;">Let's Play!</h2>
+
+    <div id="resCont" class="container"></div>
+
+    <div>
+        <form method="POST" action="{{url_for('bj_play', username=username)}}" style = "text-align: center;align-content: center;">
+            <input type="hidden" name="betamount" value="{{bet}}"/>
+            <input type="hidden" name="balance" value="{{balance}}"/>
+            <input type="hidden" name="prev" value="{{prev}}"/>
+            <input type="hidden" name="dec" value="h"/>
+            <input type="hidden" name="turn" value="{{turn}}"/>
+            <input type="submit" value = "Hit"/>
+        </form>
+        <form method="POST" action="{{url_for('bj_play', username=username)}}" style = "text-align: center;align-content: center;">
+            <input type="hidden" name="betamount" value="{{bet}}"/>
+            <input type="hidden" name="balance" value="{{balance}}"/>
+            <input type="hidden" name="prev" value="{{prev}}"/>
+            <input type="hidden" name="dec" value="s"/>
+            <input type="hidden" name="turn" value="{{turn}}"/>
+            <input type="submit" value = "Stay"/>
+        </form>
+    </div>
+</body>
+
+<script>
+    const cont = document.getElementById("resCont");
+    const t = "{{prev}}";
+    const texts = t.split("@");
+    const round = document.createElement("h3");
+    round.className="restext";
+    round.textContent="Round " + "{{turn}}";
+    cont.appendChild(round);
+    for(i = 0; i < texts.length; i++){
+        const text = document.createElement("h3")
+        text.className = "restext";
+        text.textContent = texts[i]
+        cont.appendChild(text);
+    }
+</script>
