@@ -30,21 +30,15 @@ Before starting, ensure you have the following installed:
    https://github.com/software-students-fall2024/5-final-i-crutch-bogosort.git
    cd 5-final-i-crutch-bogosort
    ```
-   
-2. Build and start the app using Docker Compose:
+2. Configure .env file
+3. Build and start the app using Docker Compose:
    ```
    docker-compose up --build
    ```
    This will start all containers.
-3. Open the app in your browser at:
-```
-   http://localhost:5000
+4. Open your browser and navigate to: ```http://localhost:5000```
+   
+5. Stop and remove containers:
    ```
-**Stop all containers:**
- ```
-docker-compose stop
-```
-**Stop and remove containers:**
- ```
-docker-compose down
-```
+   docker-compose down
+   ```
