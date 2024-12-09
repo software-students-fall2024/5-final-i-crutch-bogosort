@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <h1>Blackjack</h1>
+</head>
+
+<body>
+    <h2 style="text-align: center;">Let's Play Blackjack!</h2>
+    
+    <h2 style="align-content: center;text-align: center;">Your Balance is: ${{balance}}</h2>
+    <br>
+
+    <h3 style="text-align: center;">Before we start, enter your bet amount:</h3>
+
+    <form method = "POST" action="{{url_for('bj_play', username=username)}}" style = "text-align: center;align-content: center;">
+        <input type="number" style="align-content: center;" id="betamount" name="betamount" placeholder="Enter bet amount" required/>
+        <input type="hidden" name="balance" value="{{balance}}"/>
+        <input type="hidden" name="prev" value="1"/>
+        <input type="hidden" name="turn" value="0"/>
+        <input type="submit" value = "Place Bet"/>
+    </form>
+
+    <br>
+    <br>
+
+    <form style="align-content: center;text-align: center;" method="POST" action="{{url_for('user_home', username=username)}}">
+        <input type="hidden" value={{balance}} name="balance"/>
+        <input type="submit" value="Go Back"/>
+    </form>
+</body>

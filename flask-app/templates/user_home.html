@@ -19,6 +19,10 @@
                 <input type="hidden" value={{balance}} name="balance"/>
                 <input type="submit" class = "rebut" value="Craps"/>
             </form>
+            <form method ="POST"  action = "{{url_for('bj_home', username=username)}}">
+                <input type="hidden" value={{balance}} name="balance"/>
+                <input type="submit" class="rebut" value="Blackjack"/>
+            </form>
             <form action = "{{ url_for('logout') }}" method = "POST">
                 <button type = "submit" class = "rebut">Logout</button>
             </form>

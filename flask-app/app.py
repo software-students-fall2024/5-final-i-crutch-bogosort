@@ -9,6 +9,8 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import flask_login
 from flask_login import login_user, logout_user, login_required
 from craps_func import linebet, buybet
+from blackjack import Hand, Deck, Card
+import blackjack as bj
 import db
 
 # instantiate flask app, create key
@@ -76,7 +78,7 @@ def show_login():
 
     return render_template('login.html', error_msg=error_msg)
 
-@app.route('/<username>')
+@app.route('/<username>', methods = ["POST", "GET"])
 @flask_login.login_required
 def user_home(username):
     # if username in users_balance:
@@ -157,6 +159,73 @@ def logout():
 @login_manager.unauthorized_handler
 def unauthorized_handler():
     return 'Unauthorized', 401
+
+@app.route("/<username>/blackjack", methods = ["POST"])
+def bj_home(username):
+    balance = request.form['balance']
+    return render_template("bj_home.html", username=username, balance=balance)
+
+deck = Deck()
+dealer = Hand()
+player = Hand()
+
+
+@app.route("/<username>/blackjack/play", methods = ["POST"])
+def bj_play(username):
+    global deck
+    global player
+    global dealer
+    prev = request.form["prev"]
+    balance = float(request.form["balance"])
+    bet = float(request.form["betamount"])
+    turn = int(request.form["turn"]) + 1
+    if len(prev) == 1:
+        # start game
+        deck = Deck()
+        dealer = Hand()
+        player = Hand()
+
+        player.add_card(deck.deal_one())
+        player.add_card(deck.deal_one())
+
+        dealer.add_card(deck.deal_one())
+        dealer.add_card(deck.deal_one())
+        prev = bj.show_some(player, dealer)
+    else:
+        dec = request.form["dec"]
+        if dec == 'h':
+            prev += "@" + bj.take_hit(deck, player)
+            if player.value > 21:
+                #player went bust
+                balance -=bet
+                prev += "@You went bust!"
+                db.update_bal(username, balance, False, "blackjack")
+                return render_template("bj_result.html", username=username, prev=prev, balance=balance)
+        else:
+            prev += "@Player Stands. Dealers Turn:"
+            prev += "@" + bj.show_all(player, dealer)
+            while dealer.value <= 17:
+                prev += "@Dealer hits."
+                prev += "@" + bj.take_hit(deck, dealer)
+
+            if dealer.value > 21:
+                prev += "@" +  bj.dealer_busts()
+                balance+=bet
+                db.update_bal(username, balance, True, "blackjack")
+            elif dealer.value > player.value:
+                prev += "@" + bj.dealer_wins()
+                balance-=bet
+                db.update_bal(username, balance, False, "blackjack")
+            elif dealer.value < player.value:
+                prev += "@" + bj.player_wins()
+                balance+=bet
+                db.update_bal(username, balance, True, "blackjack")
+            else:
+                prev += "@" + bj.push()
+            
+            return render_template("bj_result.html", username=username, prev=prev, balance=balance)
+
+    return render_template("bj_play.html", username=username, prev=prev, balance=balance, bet=bet, turn=turn)
 
 
 if __name__ == "__main__":
