@@ -41,6 +41,7 @@ body {
     font-size: 18px;
 }
 
+.login-screen a,
 .login-screen input[type="submit"] {
     margin-top:25px;
     background-color: lightgray;
