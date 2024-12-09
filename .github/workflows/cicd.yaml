@@ -2,6 +2,8 @@ name: CI/CD Badge
 on: 
   pull_request:
     types: [opened, closed]
+  push:
+    branches: [main]
 jobs:
   continuous_integration:
     runs-on: ubuntu-latest
@@ -38,4 +40,4 @@ jobs:
           context: ./flask-app
           push: true
           tag: ${DOCKER_USERNAME}/bogocasino:latest
-  deployment:
+
