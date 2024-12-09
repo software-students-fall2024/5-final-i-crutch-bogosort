@@ -8,7 +8,7 @@ Our project is our virtual experience of a casino. In order to enter, a new user
 
 ## Container Images
 
-- Casino Image (DockerHub Link goes here)
+- Casino Image: [DockerHub Link](https://hub.docker.com/layers/teambogosort/bogocasino/latest/images/sha256-9651033dd005f71cc888eb2615ab6177713b58529739d97f582564fbba9ed04f?context=explore)
 
 ## Teammates:
 
