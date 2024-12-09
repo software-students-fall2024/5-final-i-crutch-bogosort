@@ -51,6 +51,7 @@ jobs:
           username: ${{secrets.USERNAME}}
           password: ${{secrets.PASSW}}
           envs: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}, ${{secrets.IMAGENAME}}, ${{secrets.DOCKER_USERNAME}}
-          run: |
+          script: |
+            sudo apt install docker
             docker-compose build --force-rm --no-cache --compress
             docker-comopse up -d
