@@ -9,6 +9,7 @@ pytest = "*"
 coverage = "*"
 flask-login = "*"
 pymongo = "*"
+exceptiongroup = "*"
 
 [dev-packages]
 
