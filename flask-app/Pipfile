@@ -10,6 +10,7 @@ coverage = "*"
 flask-login = "*"
 pymongo = "*"
 exceptiongroup = "*"
+pytest-cov = "*"
 
 [dev-packages]
 
