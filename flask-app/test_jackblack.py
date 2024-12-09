@@ -58,7 +58,9 @@ def test_show_some(capsys):
     dealer_hand.add_card(Card('Q'))
     dealer_hand.add_card(Card('8'))
 
-    show_some(player_hand, dealer_hand)
-    captured = capsys.readouterr()
-    assert "Dealer's Hand:" in captured.out
-    assert "Player's Hand:" in captured.out
+    result = show_some(player_hand, dealer_hand)
+    expected = (
+        "Dealers Hand:@(X 8)@Player Hand:@5, K (Value: 15)"
+    )
+
+    assert result == expected, f"Expected {expected}, but got {result}"
