@@ -51,6 +51,10 @@ Before starting, ensure you have the following installed:
 
 1. Simply enter the address ```http://134.122.3.54:5000/``` into your browser and enjoy gamling.
 
+Link: [Bogo Casino](http://134.122.3.54:5000/)
+
+Alternate Link: [Alt](http://138.197.58.25:5000/)
+
 ## Gambling Instructions
 
 Once you are in the casino, you can either enter your username, or, if you are new, register an account and you will be given $1000. From there you can choose either blackjack or craps. In blackjack, you must get as close to 21 while being above the dealer and not going over 21 to win. IN craps, there are four main types of bets you can make with tooltips explaining your options to you.
