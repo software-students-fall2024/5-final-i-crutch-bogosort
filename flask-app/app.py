@@ -139,7 +139,7 @@ def playbuy(username):
         return_text+=r + "@"
     if result == 'w':
         return_text += "You win!"
-        balance += bet * odds
+        balance += round(bet * odds, 2)
         win = True
     elif result == 'l':
         return_text+= "You lost!"
